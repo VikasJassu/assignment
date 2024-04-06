@@ -5,13 +5,14 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { useDispatch} from "react-redux";
 import { setShowImage } from "../redux/imagesSlice";
+import './swiper.css'; 
 
 const ImageSlider = ({ images, currentIndex }) => {
   console.log(currentIndex);
   const dispatch = useDispatch();
   return (
     <div className="fixed">
-      <Swiper modules={[Navigation]} navigation={true} slidesPerView={1} initialSlide={currentIndex} className="w-[70vw]">
+      <Swiper modules={[Navigation]} navigation={true} slidesPerView={1} initialSlide={currentIndex} className="w-[70vw] custom-swiper">
         {images.map((image, index) => (
           <SwiperSlide key={index} className="">
             <img src={image.imageUrl} alt="image" className="object-cover w-full h-[80vh] rounded-md" />
