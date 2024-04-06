@@ -30,7 +30,7 @@ const CardImages = () => {
                 class="absolute inset-0 bg-slate-800 opacity-80 text-white text-3xl flex items-center justify-center cursor-pointer"
                 onClick={() => handleImage(3)}
               >
-                +5
+                +{images.length - 3}
               </div>
             )}
           </div>
