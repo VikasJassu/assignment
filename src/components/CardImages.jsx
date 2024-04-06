@@ -1,34 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { photos } from "../data/data";
-import ImageSlider from "./ImageSlider";
+import { useDispatch } from "react-redux";
+import { setImage, setIndex, setShowImage } from "../redux/imagesSlice";
 
 const CardImages = () => {
-  const [index, setIndex] = useState();
-  const [showImage, setShowImage] = useState(false);
   const [images, setImages] = useState([]);
+  const dispatch = useDispatch();
   useEffect(() => setImages(photos));
 
   const handleImage = (index) => {
-    setIndex(index);
-    setShowImage(true);
+    dispatch(setIndex(index));
+    dispatch(setShowImage(true));
+    dispatch(setImage(images));
   };
   return (
     <div className="relative">
-      <div className="grid grid-cols-2 gap-[2px] absolute">
+      <div className="grid grid-cols-2 gap-[2px]">
         {images.slice(0, 4).map((image, index) => (
-          <img
-            src={image.imageUrl}
-            alt={image.alt}
-            key={index}
-            onClick={() => handleImage(index)}
-            className="w-full h-full object-cover rounded-sm"
-          />
+          <div className="relative">
+            <img
+              src={image.imageUrl}
+              alt={image.alt}
+              key={index}
+              onClick={() => handleImage(index)}
+              className={`w-full h-full object-cover rounded-sm cursor-pointer`}
+            />
+            {index === 3 && (
+              <div
+                class="absolute inset-0 bg-slate-800 opacity-80 text-white text-3xl flex items-center justify-center cursor-pointer"
+                onClick={() => handleImage(3)}
+              >
+                +5
+              </div>
+            )}
+          </div>
         ))}
-      </div>
-      <div className="bg-red-500 w-full">
-        <div className="relative bottom-36 right-40">
-          {showImage && <ImageSlider images={images} currentIndex={index} />}
-        </div>
       </div>
     </div>
   );
