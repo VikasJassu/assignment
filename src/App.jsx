@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import "./App.css";
 import Card from "./components/Card";
 import { useEffect, useState } from "react";
@@ -9,7 +9,6 @@ function App() {
   const image = useSelector((state) => state.imageReducer.image);
   const { index, showImage } = useSelector((state) => state.imageReducer);
   useEffect(() => setImages(image));
-  console.log("index", index);
 
   return (
     <div className="container mx-auto relative">
@@ -20,7 +19,7 @@ function App() {
       >
         <Card />
       </div>
-      <div className="absolute top-16 left-52 mx-auto">
+      <div className="absolute top-48 left-5 md:top-16 md:left-52 mx-auto">
         {showImage && (
           <div>
             <ImageSlider images={images} currentIndex={index} />

@@ -8,15 +8,14 @@ import { setShowImage } from "../redux/imagesSlice";
 import './swiper.css'; 
 
 const ImageSlider = ({ images, currentIndex }) => {
-  console.log(currentIndex);
   const dispatch = useDispatch();
   return (
     <div className="fixed">
-      <Swiper modules={[Navigation]} navigation={true} slidesPerView={1} initialSlide={currentIndex} className="w-[70vw] custom-swiper">
+      <Swiper modules={[Navigation]} navigation={true} slidesPerView={1} initialSlide={currentIndex} className="md:w-[70vw] w-[90vw] custom-swiper">
         {images.map((image, index) => (
           <SwiperSlide key={index} className="">
-            <img src={image.imageUrl} alt="image" className="object-cover w-full h-[80vh] rounded-md" />
-            <div onClick={()=> dispatch(setShowImage(false))} className="text-xl text-black bg-slate-300 w-9 h-9 rounded-full aspect-square p-3 flex items-center justify-center absolute z-50 top-1 left-1 cursor-pointer hover:bg-slate-400">X</div>
+            <img src={image.imageUrl} alt="image" className="object-cover md:w-full md:h-[80vh] w-[90vw] h-[40vh] rounded-md" />
+            <div onClick={()=> dispatch(setShowImage(false))} className="md:text-xl text-black bg-slate-300 md:w-9 md:h-9 w-6 h-6 rounded-full aspect-square p-3 flex items-center justify-center absolute z-50 top-1 left-1 cursor-pointer hover:bg-slate-400">X</div>
           </SwiperSlide>
         ))}
       </Swiper>

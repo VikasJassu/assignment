@@ -5,9 +5,9 @@ import CardImages from "./CardImages";
 
 const Card = () => {
   return (
-    <div className="bg-white rounded-lg w-6/12 h-min p-3">
+    <div className="bg-white rounded-lg md:w-6/12 w-full h-min p-3">
       <CardHeader />
-      <p className="text-sm mt-5 mb-2">
+      <p className="md:text-sm text-xs mt-5 mb-2">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
